@@ -31,5 +31,6 @@
         (println "No entry")
         (do
             (todo.actions.ShowTodos/print-entries (format-and-filter todolist))
-            (todo.actions.ShowTodos/print-line-after-todos (format-and-filter todolist)))
+            (todo.actions.ShowTodos/print-line-after-todos (format-and-filter todolist))
+            (todo.utils/wait-for-enter))
         ))

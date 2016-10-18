@@ -26,4 +26,5 @@
         (todo.menus.print/print-per-line (todo.menus.print/prepend-numbers (format-entries @todo-ref)))
         (println todo.labels/what-to-delete)
         (dosync
-            (alter todo-ref delete-entry (todo.utils/parse-int (read-line))))))
+            (alter todo-ref delete-entry (todo.utils/parse-int (read-line))))
+        ))

@@ -1,6 +1,9 @@
-(ns todo.actions.Edit)
+(ns todo.actions.Edit
+    (:require [todo.utils]))
 
 ;;TODO
 
 (defn edit [todo-ref]
-    (println "EDIT"))
+    (do
+        (println "EDIT")
+        ))

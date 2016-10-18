@@ -10,3 +10,4 @@
 (def what-to-done "Which TODO you want mark as done:")
 (def write-name "Write label for new todo:")
 (def what-to-delete "Which one you want to delete:")
+(def press-enter-to-continue "Press enter to continue")
