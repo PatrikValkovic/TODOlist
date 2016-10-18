@@ -1,6 +1,6 @@
 (ns todo.actions.ShowTodos
-    (:require [todo.utils])
-    (:require [todo.menus.print]))
+    (:require [todo.utils]
+              [todo.menus.print]))
 
 ;;filter and format text
 (defn- format-and-filter [todo-list]

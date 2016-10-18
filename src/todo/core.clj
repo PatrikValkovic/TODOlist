@@ -1,23 +1,23 @@
 (ns todo.core
-    (:require [todo.menus.menu])
-    (:require [todo.menus.welcome-end])
-    (:require [todo.actions.MarkAsDone])
-    (:require [todo.actions.ShowOnMainPage])
-    (:require [todo.actions.ShowTodos])
-    (:require [todo.actions.Create])
-    (:require [todo.actions.Delete])
-    (:require [todo.actions.Load])
-    (:require [todo.actions.Store])
-    (:require [todo.actions.Edit]))
+    (:require [todo.menus.menu]
+              [todo.menus.welcome-end]
+              [todo.actions.MarkAsDone]
+              [todo.actions.ShowOnMainPage]
+              [todo.actions.ShowTodos]
+              [todo.actions.Create]
+              [todo.actions.Delete]
+              [todo.actions.Load]
+              [todo.actions.Store]
+              [todo.actions.Edit]))
 
 (todo.menus.welcome-end/print-start-message)
 
 (def todo-list (ref (list {:label "One entry of todo list"
-                           :done false}
+                           :done  false}
                           {:label "Next entry of todo list"
-                           :done false}
+                           :done  false}
                           {:label "What else"
-                           :done true})))
+                           :done  true})))
 
 (loop [continue true]
     (if (not (false? continue))

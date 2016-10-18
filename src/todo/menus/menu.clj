@@ -1,6 +1,6 @@
 (ns todo.menus.menu
-    (:require [todo.labels])
-    (:require [todo.menus.print]))
+    (:require [todo.labels]
+              [todo.menus.print]))
 
 ;takes only odds
 (defn- take-odds [inputs]                                   ;is equal to loop version

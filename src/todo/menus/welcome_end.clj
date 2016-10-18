@@ -1,7 +1,7 @@
 (ns todo.menus.welcome-end
-    (:require [todo.labels])
-    (:require [todo.utils])
-    (:require [todo.menus.print]))
+    (:require [todo.labels]
+              [todo.utils]
+              [todo.menus.print]))
 
 (defn- generate-line-after-heading []
     (todo.menus.print/generate-line (todo.utils/get-width-of-text todo.labels/start-message)))

@@ -1,6 +1,6 @@
 (ns todo.menus.print
-    (:require [todo.labels])
-    (:require [todo.utils]))
+    (:require [todo.labels]
+              [todo.utils]))
 
 ;;generate line of specific width
 (defn generate-line [width]
