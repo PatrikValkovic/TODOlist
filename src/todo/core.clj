@@ -30,7 +30,7 @@
                        "Edit entry" #(todo.actions.Edit/edit todo-list)
                        "Delete entry" #(todo.actions.Delete/delete todo-list)
                        "Store list" #(todo.actions.Store/store @todo-list)
-                       "Load list" #(todo.actions.Load/load todo-list)
+                       "Load list" #(todo.actions.Load/load-todos todo-list)
                        "End app" #(do false))))
         continue))
 

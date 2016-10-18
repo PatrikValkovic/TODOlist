@@ -15,12 +15,9 @@
             actual
             )))
 
-(defn- print-per-line [seq]
-    (doseq [x seq] (println x)))
-
 (defn- print-menu [to-print]
     {:pre (even? (count to-print))}
-    (print-per-line (todo.menus.print/prepend-numbers (take-odds-loop to-print))))
+    (todo.menus.print/print-per-line (todo.menus.print/prepend-numbers (take-odds-loop to-print))))
 
 ;;validate if is number between count and 1
 (defn- validate-input [number count]

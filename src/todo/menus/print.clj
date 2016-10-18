@@ -15,3 +15,7 @@
     (map str (range 1 (+ 1 (count items)))
          (repeat (count items) " ") items))
 
+(defn print-per-line [seq]
+    (doseq [one seq]
+        (println one)))
+

@@ -11,17 +11,11 @@
                  ))
          todo-list))
 
-
-;;print text of one entry
-(defn- print-one-entry [entry]
-    (println entry))
-
 ;;print all entries
 (defn print-entries [entries]
     (do
         (println todo.labels/your-todos)
-        (doseq [entry entries]
-            (print-one-entry entry))
+        (todo.menus.print/print-per-line entries)
         (print "\033[0m")))
 
 ;;generate line after last todos entry

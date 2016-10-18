@@ -9,3 +9,4 @@
 (def your-todos "Your TODOs:")
 (def what-to-done "Which TODO you want mark as done:")
 (def write-name "Write label for new todo:")
+(def what-to-delete "Which one you want to delete:")
