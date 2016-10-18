@@ -1,6 +1,5 @@
 (ns todo.actions.Edit
-    (:require [todo.utils]
-              [todo.labels :as l]
+    (:require [todo.labels :as l]
               [todo.menus.print :as p]
               [clj-time.format :as f]
               [todo.utils :as u]))
@@ -22,10 +21,10 @@
     (ask-for l/ask-for-label actual-label str))
 
 (defn- ask-for-done [actual-done]
-    (ask-for l/ask-for-done actual-done todo.utils/parse-bool))
+    (ask-for l/ask-for-done actual-done u/parse-bool))
 
 (defn- ask-for-priority [actual-priority]
-    (ask-for l/ask-for-priority actual-priority todo.utils/parse-int))
+    (ask-for l/ask-for-priority actual-priority u/parse-int))
 
 (defn- ask-for-when [actual-when]
     (ask-for

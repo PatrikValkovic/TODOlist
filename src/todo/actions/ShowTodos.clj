@@ -1,6 +1,6 @@
 (ns todo.actions.ShowTodos
     (:require [todo.utils :as u]
-              [todo.menus.print]
+              [todo.menus.print :as p]
               [clj-time.format :as f]))
 
 ;;filter and format text
@@ -19,15 +19,15 @@
 (defn print-entries [entries]
     (do
         (println todo.labels/your-todos)
-        (todo.menus.print/print-per-line entries)
+        (p/print-per-line entries)
         (print "\033[0m")))
 
 ;;generate line after last todos entry
 (defn print-line-after-todos
-    ([todolist plus] (println (todo.menus.print/generate-line
+    ([todolist plus] (println (p/generate-line
                                   (+ plus
                                      (do
-                                         (todo.utils/get-width-of-text
+                                         (u/get-width-of-text
                                              (last todolist)))))))
     ([todolist]
         (print-line-after-todos todolist 0))
@@ -37,7 +37,7 @@
     (if (= 0 (count todolist))
         (println "No entry")
         (do
-            (todo.actions.ShowTodos/print-entries (format-and-filter todolist))
-            (todo.actions.ShowTodos/print-line-after-todos (format-and-filter todolist) -5)
-            (todo.utils/wait-for-enter))
+            (print-entries (format-and-filter todolist))
+            (print-line-after-todos (format-and-filter todolist) -5)
+            (u/wait-for-enter))
         ))

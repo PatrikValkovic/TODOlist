@@ -1,7 +1,7 @@
 (ns todo.actions.Delete
-    (:require [todo.labels]
-              [todo.menus.print]
-              [todo.utils]))
+    (:require [todo.labels :as l]
+              [todo.menus.print :as p]
+              [todo.utils :as u]))
 
 (defn- format-entries [todos]
     (map (fn [entry]
@@ -23,8 +23,8 @@
 
 (defn delete [todo-ref]
     (do
-        (todo.menus.print/print-per-line (todo.menus.print/prepend-numbers (format-entries @todo-ref)))
-        (println todo.labels/what-to-delete)
+        (p/print-per-line (p/prepend-numbers (format-entries @todo-ref)))
+        (println l/what-to-delete)
         (dosync
-            (alter todo-ref delete-entry (todo.utils/parse-int (read-line))))
+            (alter todo-ref delete-entry (u/parse-int (read-line))))
         ))

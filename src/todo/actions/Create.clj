@@ -5,7 +5,7 @@
 
 (defn- ask-for-name []
     (do
-        (println todo.labels/write-name)
+        (println l/write-name)
         (read-line)))
 
 (defn- ask-for-when []

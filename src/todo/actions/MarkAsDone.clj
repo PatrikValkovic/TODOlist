@@ -1,7 +1,8 @@
 (ns todo.actions.MarkAsDone
-    (:require [todo.actions.ShowTodos]
-              [todo.menus.print]
-              [todo.labels]))
+    (:require [todo.actions.ShowTodos :as st]
+              [todo.menus.print :as p]
+              [todo.labels :as l]
+              [todo.utils :as u]))
 
 (defn- filter-and-format [todos]
     (map (fn [todo]
@@ -27,8 +28,8 @@
 
 (defn mark-entry-as-done [todos-as-ref]
     (do
-        (todo.actions.ShowTodos/print-entries (todo.menus.print/prepend-numbers (filter-and-format @todos-as-ref)))
-        (println todo.labels/what-to-done)
+        (st/print-entries (p/prepend-numbers (filter-and-format @todos-as-ref)))
+        (println l/what-to-done)
         (dosync
-            (alter todos-as-ref function-to-change (todo.utils/parse-int (read-line))))
+            (alter todos-as-ref function-to-change (u/parse-int (read-line))))
         ))

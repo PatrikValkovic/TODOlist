@@ -1,5 +1,5 @@
 (ns todo.actions.ShowOnMainPage
-    (:require [todo.actions.ShowTodos]
+    (:require [todo.actions.ShowTodos :as st]
               [clj-time.format :as df]
               [todo.utils :as u]))
 
@@ -16,6 +16,6 @@
     (if (= 0 (count (format-and-filter todolist)))
         nil
         (do
-            (todo.actions.ShowTodos/print-entries (todo.menus.print/prepend-numbers (format-and-filter todolist)))
-            (todo.actions.ShowTodos/print-line-after-todos (format-and-filter todolist) (inc (todo.utils/digits-of-number (count (format-and-filter todolist))))))
+            (st/print-entries (todo.menus.print/prepend-numbers (format-and-filter todolist)))
+            (st/print-line-after-todos (format-and-filter todolist) (inc (u/digits-of-number (count (format-and-filter todolist))))))
         ))
