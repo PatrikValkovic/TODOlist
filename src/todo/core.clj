@@ -1,12 +1,14 @@
 (ns todo.core
     (:require [todo.menus.menu])
     (:require [todo.menus.welcome-end])
-    (:require [todo.menus.print])
-    (:require [todo.utils])
     (:require [todo.actions.MarkAsDone])
     (:require [todo.actions.ShowOnMainPage])
     (:require [todo.actions.ShowTodos])
-    (:require [todo.actions.Create]))
+    (:require [todo.actions.Create])
+    (:require [todo.actions.Delete])
+    (:require [todo.actions.Load])
+    (:require [todo.actions.Store])
+    (:require [todo.actions.Edit]))
 
 (todo.menus.welcome-end/print-start-message)
 
@@ -25,10 +27,10 @@
                        "Show all todos" #(todo.actions.ShowTodos/print-todos @todo-list)
                        "Mark entry as done" #(todo.actions.MarkAsDone/mark-entry-as-done todo-list)
                        "Create new entry" #(todo.actions.Create/create todo-list)
-                       "Edit entry" #(println "Edit entry")
-                       "Delete entry" #(println "Delete entry")
-                       "Store list" #(println "Store list")
-                       "Load list" #(println "Load list")
+                       "Edit entry" #(todo.actions.Edit/edit todo-list)
+                       "Delete entry" #(todo.actions.Delete/delete todo-list)
+                       "Store list" #(todo.actions.Store/store @todo-list)
+                       "Load list" #(todo.actions.Load/load todo-list)
                        "End app" #(do false))))
         continue))
 
