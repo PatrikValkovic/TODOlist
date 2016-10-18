@@ -11,3 +11,7 @@
 (def write-name "Write label for new todo:")
 (def what-to-delete "Which one you want to delete:")
 (def press-enter-to-continue "Press enter to continue")
+(def what-to-edit "Which one you want to edit:")
+(def default "default")
+(def ask-for-label "New label")
+(def ask-for-done "Is it done?")

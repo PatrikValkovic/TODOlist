@@ -1,6 +1,21 @@
 (ns todo.utils
     (:require [todo.labels]))
 
+(defn parse-bool [^String text]
+    (if (= text "true")
+        true
+        (if (= text "True")
+            true
+            (if (= text "Yes")
+                true
+                (if (= text "yes")
+                    true
+                    (if (= text "y")
+                        true
+                        (if (= text "Y")
+                            true
+                            false)))))))
+
 (defn parse-int [^String text]
     (Integer/parseInt text))
 
