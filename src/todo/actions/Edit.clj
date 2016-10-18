@@ -1,33 +1,43 @@
 (ns todo.actions.Edit
     (:require [todo.utils]
-              [todo.labels]
-              [todo.menus.print]))
+              [todo.labels :as l]
+              [todo.menus.print :as p]
+              [clj-time.format :as f]
+              [todo.utils :as u]))
 
 (defn- format-todos [todos]
     (map (fn [entry]
              (:label entry))
          todos))
 
-(defn- ask-for-label [actual-label]
+(defn- ask-for [question default fn]
     (do
-        (println todo.labels/ask-for-label (str \[ actual-label \]))
+        (println question (str \[ default \]))
         (let [entry (read-line)]
-            (if (= 0 (todo.utils/get-width-of-text entry))
-                actual-label
-                entry)
-            )))
+            (if (= 0 (u/get-width-of-text entry))
+                default
+                (fn entry)))))
+
+(defn- ask-for-label [actual-label]
+    (ask-for l/ask-for-label actual-label str))
 
 (defn- ask-for-done [actual-done]
-    (do
-        (println todo.labels/ask-for-done (str \[ actual-done \]))
-        (let [entry (read-line)]
-            (if (= 0 (todo.utils/get-width-of-text entry))
-                actual-done
-                (todo.utils/parse-bool entry)))))
+    (ask-for l/ask-for-done actual-done todo.utils/parse-bool))
+
+(defn- ask-for-priority [actual-priority]
+    (ask-for l/ask-for-priority actual-priority todo.utils/parse-int))
+
+(defn- ask-for-when [actual-when]
+    (ask-for
+        l/ask-for-when
+        (f/unparse u/output-formater actual-when)
+        (fn [str] (f/parse u/input-formater str))))
 
 (defn- edit-todo [instance]
-    {:label (ask-for-label (:label instance))
-     :done  (ask-for-done (:done instance))})
+    {:label    (ask-for-label (:label instance))
+     :done     (ask-for-done (:done instance))
+     :when     (ask-for-when (:when instance))
+     :priority (ask-for-priority (:priority instance))})
 
 (defn- edit-todos [todos index]
     (loop [actual       nil
@@ -42,8 +52,8 @@
 
 (defn edit [todo-ref]
     (do
-        (println todo.labels/what-to-edit)
-        (todo.menus.print/print-per-line (todo.menus.print/prepend-numbers (format-todos @todo-ref)))
+        (println l/what-to-edit)
+        (p/print-per-line (p/prepend-numbers (format-todos @todo-ref)))
         (dosync
-            (alter todo-ref edit-todos (todo.utils/parse-int (read-line))))
+            (alter todo-ref edit-todos (u/parse-int (read-line))))
         ))

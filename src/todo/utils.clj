@@ -1,5 +1,6 @@
 (ns todo.utils
-    (:require [todo.labels]))
+    (:require [todo.labels]
+              [clj-time.format]))
 
 (defn parse-bool [^String text]
     (if (= text "true")
@@ -31,3 +32,6 @@
     ([] (do
             (println todo.labels/press-enter-to-continue)
             (read-line))))
+
+(def input-formater (clj-time.format/formatter "YYYY-MM-dd"))
+(def output-formater (clj-time.format/formatter "dd. MM. YYYY"))

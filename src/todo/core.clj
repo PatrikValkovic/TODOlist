@@ -1,5 +1,6 @@
 (ns todo.core
-    (:require [todo.menus.menu]
+    (:require [clj-time.core :as t]
+              [todo.menus.menu]
               [todo.menus.welcome-end]
               [todo.actions.MarkAsDone]
               [todo.actions.ShowOnMainPage]
@@ -13,11 +14,17 @@
 (todo.menus.welcome-end/print-start-message)
 
 (def todo-list (ref (list {:label "One entry of todo list"
-                           :done  false}
+                           :done  false
+                           :when (t/date-time 2016 11 1)
+                           :priority 10}
                           {:label "Next entry of todo list"
-                           :done  false}
+                           :done  false
+                           :when (t/date-time 2016 11 1)
+                           :priority 5}
                           {:label "What else"
-                           :done  true})))
+                           :done  true
+                           :when (t/date-time 2016 10 10)
+                           :priority 10})))
 
 (loop [continue true]
     (if (not (false? continue))
