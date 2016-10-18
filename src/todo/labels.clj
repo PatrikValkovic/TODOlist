@@ -1,5 +1,7 @@
 (ns todo.labels)
 
+(def store-file "todos.dat")
+
 (def start-message "Welcome to TODO list app in Clojure made by Patrik Valkovic")
 (def end-message "Thank you for using TODO list")
 (def your-choice "Your choice:")

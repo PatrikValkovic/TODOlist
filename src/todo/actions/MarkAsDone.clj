@@ -29,9 +29,6 @@
     (do
         (todo.actions.ShowTodos/print-entries (todo.menus.print/prepend-numbers (filter-and-format @todos-as-ref)))
         (println todo.labels/what-to-done)
-        ;(println "PRED" @todos-as-ref)
-        ;(println "PO" (function-to-change @todos-as-ref 1))
         (dosync
             (alter todos-as-ref function-to-change (todo.utils/parse-int (read-line))))
-        ;(println "PO" @todos-as-ref)
         ))

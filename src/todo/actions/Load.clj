@@ -1,6 +1,7 @@
-(ns todo.actions.Load)
-
-;;TODO
+(ns todo.actions.Load
+    (:require [todo.labels]))
 
 (defn load [todo-ref]
-    (println "LOAD"))
+    (dosync
+        (ref-set todo-ref (read-string (slurp todo.labels/store-file)))
+        ))
