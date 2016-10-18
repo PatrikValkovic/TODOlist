@@ -1,14 +1,20 @@
-# todo
+# TODOapp
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure app that manage tasks.
 
-## Usage
+# Usage
 
-FIXME
+App can
+ - Creates new tasks
+ - Edit old tasks
+ - Delete tasks
+ - Show all tasks
+ - Store tasks into file
+ - Load tasks from file
+ - Sort tasks based on their priority and date
 
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2016
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the MIT licence.
