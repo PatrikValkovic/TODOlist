@@ -1,14 +1,16 @@
 (ns todo.actions.ShowOnMainPage
     (:require [todo.actions.ShowTodos :as st]
               [clj-time.format :as df]
-              [todo.utils :as u]))
+              [todo.utils :as u]
+              [todo.sorting :as s]))
 
 ;;filter what todos to show and than transform it to string format
 (defn- format-and-filter [todos]
     (map (fn [todo]
              (str (:label todo)))
-         (filter (fn [todo] (not (:done todo)))
-                 todos))
+         (s/sort-todos
+             (filter (fn [todo] (not (:done todo)))
+                     todos)))
     )
 
 ;;print todolist as preview on main page

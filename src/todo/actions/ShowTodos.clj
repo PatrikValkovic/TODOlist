@@ -1,7 +1,8 @@
 (ns todo.actions.ShowTodos
     (:require [todo.utils :as u]
               [todo.menus.print :as p]
-              [clj-time.format :as f]))
+              [clj-time.format :as f]
+              [todo.sorting :as s]))
 
 ;;filter and format text
 (defn- format-and-filter [todo-list]
@@ -13,7 +14,7 @@
                      )
                  (f/unparse u/output-formater (:when todo)) "  "
                  (:label todo)))
-         todo-list))
+         (s/sort-todos todo-list)))
 
 ;;print all entries
 (defn print-entries [entries]

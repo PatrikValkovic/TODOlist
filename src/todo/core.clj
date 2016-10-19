@@ -9,22 +9,29 @@
               [todo.actions.Delete]
               [todo.actions.Load]
               [todo.actions.Store]
-              [todo.actions.Edit]))
+              [todo.actions.Edit]
+              [todo.sorting :as s]))
 
 (todo.menus.welcome-end/print-start-message)
 
-(def todo-list (ref (list {:label "One entry of todo list"
+(def todo-list (ref (list {:label "Entry with priority 10"
                            :done  false
                            :when (t/date-time 2016 11 1)
                            :priority 10}
-                          {:label "Next entry of todo list"
+                          {:label "Entry with priority 5"
                            :done  false
                            :when (t/date-time 2016 11 1)
                            :priority 5}
-                          {:label "What else"
+                          {:label "Done task"
                            :done  true
                            :when (t/date-time 2016 10 10)
-                           :priority 10})))
+                           :priority 10}
+                          {:label "Expired task"
+                           :done  false
+                           :when (t/date-time 2016 10 10)
+                           :priority 1})))
+
+(println "SORTED" (s/sort-todos @todo-list))
 
 (loop [continue true]
     (if (not (false? continue))
