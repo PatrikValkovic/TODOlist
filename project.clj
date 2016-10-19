@@ -4,4 +4,6 @@
   :license {:name "MIT licence"
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [clj-time "0.12.0"]])
+                 [clj-time "0.12.0"]]
+  :main todo.core
+  :aot [todo.core])
