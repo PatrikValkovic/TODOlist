@@ -35,3 +35,5 @@
                 continue))
 
         (todo.menus.welcome-end/print-end-message)))
+
+(-main)
