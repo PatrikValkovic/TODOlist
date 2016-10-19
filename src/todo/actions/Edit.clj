@@ -27,10 +27,12 @@
     (ask-for l/ask-for-priority actual-priority u/parse-int))
 
 (defn- ask-for-when [actual-when]
-    (ask-for
-        l/ask-for-when
-        (f/unparse u/output-formater actual-when)
-        (fn [str] (f/parse u/input-formater str))))
+    (f/parse
+        u/input-formater
+        (ask-for
+            l/ask-for-when
+            (f/unparse u/input-formater actual-when)
+            (fn [str] str))))
 
 (defn- edit-todo [instance]
     {:label    (ask-for-label (:label instance))
